@@ -1,0 +1,116 @@
+let ar=[];
+for(let i=0;i<8;i++)
+{
+    ar[i]=document.querySelector(".list").children[i].children[0];
+}
+console.log(ar);
+
+document.querySelector(".center").appendChild(ar[1]);
+document.querySelector(".left").appendChild(ar[2]);
+ar[1].style.cssText="width:100%;height:100%;"
+ar[2].style.cssText="filter:grayscale(190%);opacity:1;";
+ar[0].style.cssText="filter:grayscale(190%);opacity:1;";
+document.querySelector(".right").appendChild(ar[0]);
+
+let i;
+document.querySelector(".next").onclick=function()
+{
+    i=ar.indexOf(document.querySelector(".center").children[0]);
+    console.log(i);
+    if(i==6)
+    {
+        ar[5].style.display="none";
+        document.querySelector(".center").appendChild(ar[7]); 
+        ar[7].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[0]);
+        document.querySelector(".right").appendChild(ar[6]);
+        ar[6].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[0].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    i++;
+        return;
+    }
+    if(i==7)
+    {
+        ar[6].style.display="none";
+        document.querySelector(".center").appendChild(ar[0]); 
+        ar[0].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[1]);
+        document.querySelector(".right").appendChild(ar[7]);
+        ar[7].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[1].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    i=0;
+        return;
+    }
+    if(i==0)
+    {
+        ar[7].style.display="none";
+        document.querySelector(".center").appendChild(ar[1]); 
+        ar[1].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[2]);
+        document.querySelector(".right").appendChild(ar[0]);
+        ar[0].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[2].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    i++;
+        return;
+    }
+    ar[i-1].style.display="none";
+    i++;
+    console.log("devient"+i);
+    document.querySelector(".center").appendChild(ar[i]);
+    ar[i].style.cssText="width:100%;height:100%;";  
+    document.querySelector(".left").appendChild(ar[i+1]);
+    document.querySelector(".right").appendChild(ar[i-1]);
+    ar[i+1].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[i-1].style.cssText="filter:grayscale(100%);opacity:1.2;";
+}
+
+
+let b;
+document.querySelector(".previous").onclick=function()
+{
+   b=ar.indexOf(document.querySelector(".center").children[0]);
+    if(b==1)
+    {
+        ar[b+1].style.display="none";
+        document.querySelector(".center").appendChild(ar[b-1]); 
+        ar[b-1].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[b]);
+        document.querySelector(".right").appendChild(ar[7]);
+        ar[b].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[7].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    b--;
+        return;
+    }
+    if(b==0)
+    {
+        ar[b+1].style.display="none";
+        document.querySelector(".center").appendChild(ar[7]); 
+        ar[7].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[0]);
+        document.querySelector(".right").appendChild(ar[6]);
+        ar[6].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[0].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    b=7;
+        return;
+    }
+    if(b==7)
+    {
+        ar[0].style.display="none";
+        document.querySelector(".center").appendChild(ar[6]); 
+        ar[6].style.cssText="width:100%;height:100%;"; 
+        document.querySelector(".left").appendChild(ar[7]);
+        document.querySelector(".right").appendChild(ar[5]);
+        ar[7].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[5].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    b--;
+        return;
+    }
+    ar[b+1].style.display="none";
+    document.querySelector(".center").appendChild(ar[b-1]);
+    ar[b-1].style.cssText="width:100%;height:100%;";  
+    document.querySelector(".left").appendChild(ar[b]);
+    document.querySelector(".right").appendChild(ar[b-2]);
+    ar[b].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    ar[b-2].style.cssText="filter:grayscale(100%);opacity:1.2;";
+    b--;
+}
